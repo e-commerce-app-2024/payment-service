@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 @Builder
 public record PaymentConfirmation(
         String paymentReference,
+        String orderReference,
         BigDecimal amount,
         PaymentMethodEnum paymentMethod,
         String customerName,

@@ -78,6 +78,7 @@ public class PaymentServiceImpl implements PaymentService {
                 .amount(paymentRequest.amount())
                 .paymentMethod(paymentRequest.paymentMethod())
                 .paymentReference(paymentReference)
+                .orderReference(paymentRequest.orderReference())
                 .build();
     }
 }
