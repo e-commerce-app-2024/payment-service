@@ -24,7 +24,7 @@ public class PaymentController {
     private final PaymentService paymentService;
 
     @PostMapping
-    public AppResponse<PaymentResponse> createOrder(@Valid @RequestBody PaymentRequest request) {
+    public AppResponse<PaymentResponse> createPayment(@Valid @RequestBody PaymentRequest request) {
         return AppResponse.created(paymentService.createPayment(request));
     }
 
