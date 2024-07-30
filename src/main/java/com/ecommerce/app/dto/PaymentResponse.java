@@ -9,6 +9,7 @@ public record PaymentResponse(
         Long orderId,
         String reference,
         BigDecimal amount,
-        PaymentMethodEnum paymentMethod
+        PaymentMethodEnum paymentMethod,
+        Boolean success
 ) {
 }

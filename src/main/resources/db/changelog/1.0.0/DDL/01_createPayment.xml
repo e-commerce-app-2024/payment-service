@@ -13,6 +13,7 @@
                 REFERENCE        VARCHAR(255)   NOT NULL,
                 AMOUNT           NUMERIC(38, 2) NOT NULL,
                 PAYMENT_METHOD   VARCHAR(255)   NOT NULL,
+                SUCCESS          BOOL           NOT NULL,
                 CREATED_BY       INT8,
                 LAST_MODIFIED_BY INT8,
                 CREATED_AT       TIMESTAMP(6) DEFAULT CURRENT_DATE,

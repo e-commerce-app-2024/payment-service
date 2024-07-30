@@ -25,4 +25,5 @@ public class PaymentEntity extends EntityBase {
     private BigDecimal amount;
     @Enumerated(EnumType.STRING)
     private PaymentMethodEnum paymentMethod;
+    private boolean success;
 }
