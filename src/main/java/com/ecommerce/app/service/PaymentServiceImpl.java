@@ -39,7 +39,8 @@ public class PaymentServiceImpl implements PaymentService {
         boolean success = bankingService.Pay(paymentRequest);
         payment.setSuccess(success);
         payment = paymentRepo.save(payment);
-        paymentProducerService.sendPaymentConfirmation(preparePaymentConfirmation(paymentRequest, payment.getReference()));
+        if (success)
+            paymentProducerService.sendPaymentConfirmation(preparePaymentConfirmation(paymentRequest, payment.getReference()));
         return paymentMapper.toPaymentResponse(payment);
     }
 
