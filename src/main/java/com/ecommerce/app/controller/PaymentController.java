@@ -8,7 +8,7 @@ import com.ecommerce.app.payload.AppResponse;
 import com.ecommerce.app.payload.PageResponse;
 import com.ecommerce.app.service.PaymentService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -30,17 +30,17 @@ public class PaymentController {
 
     @PostMapping("/filter")
     public AppResponse<PageResponse<PaymentResponse>> getPayments(@Valid @RequestBody PaymentFilterRequest request) {
-        return AppResponse.created(paymentService.getPayments(request));
+        return AppResponse.ok(paymentService.getPayments(request));
     }
 
     @GetMapping("/{id}")
     public AppResponse<PaymentResponse> getPaymentById(@PathVariable Long id) {
-        return AppResponse.created(paymentService.getPaymentById(id));
+        return AppResponse.ok(paymentService.getPaymentById(id));
     }
 
     @GetMapping
-    public AppResponse<List<PaymentResponse>> getPaymentByOrderId(@RequestParam @Positive(message = "order Id is invalid") Long orderId) {
-        return AppResponse.created(paymentService.getPaymentByOrderId(orderId));
+    public AppResponse<List<PaymentResponse>> getPaymentByOrderId(@RequestParam @NotNull(message = "order reference is required") String orderReference) {
+        return AppResponse.ok(paymentService.getPaymentByOrder(orderReference));
     }
 
 }

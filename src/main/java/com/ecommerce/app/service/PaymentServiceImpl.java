@@ -35,12 +35,12 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public PaymentResponse createPayment(PaymentRequest paymentRequest) {
         PaymentEntity payment = paymentMapper.toPayment(paymentRequest);
-        payment.setReference(UUID.randomUUID().toString());
+        payment.setPaymentReference(UUID.randomUUID().toString());
         boolean success = bankingService.Pay(paymentRequest);
         payment.setSuccess(success);
         payment = paymentRepo.save(payment);
         if (success)
-            paymentProducerService.sendPaymentConfirmation(preparePaymentConfirmation(paymentRequest, payment.getReference()));
+            paymentProducerService.sendPaymentConfirmation(preparePaymentConfirmation(paymentRequest, payment.getPaymentReference()));
         return paymentMapper.toPaymentResponse(payment);
     }
 
@@ -66,8 +66,8 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public List<PaymentResponse> getPaymentByOrderId(Long id) {
-        List<PaymentEntity> all = paymentRepo.findByOrderId(id);
+    public List<PaymentResponse> getPaymentByOrder(String orderReference) {
+        List<PaymentEntity> all = paymentRepo.findByOrderReference(orderReference);
         return paymentMapper.toPaymentResponse(all);
     }
 

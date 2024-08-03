@@ -15,5 +15,5 @@ public interface PaymentService {
 
     PaymentResponse getPaymentById(Long id);
 
-    List<PaymentResponse> getPaymentByOrderId(Long id);
+    List<PaymentResponse> getPaymentByOrder(String orderReference);
 }

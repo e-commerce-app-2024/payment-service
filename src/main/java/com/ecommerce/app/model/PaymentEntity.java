@@ -20,8 +20,8 @@ public class PaymentEntity extends EntityBase {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "PAYMENT_SEQ")
     @SequenceGenerator(name = "PAYMENT_SEQ", sequenceName = "PAYMENT_SEQ", allocationSize = 1)
     private Long id;
-    private Long orderId;
-    private String reference;
+    private String orderReference;
+    private String paymentReference;
     private BigDecimal amount;
     @Enumerated(EnumType.STRING)
     private PaymentMethodEnum paymentMethod;

@@ -12,6 +12,6 @@ public interface PaymentRepo extends BaseRepo<PaymentEntity> {
 
     Page<PaymentEntity> findBySuccess(Boolean success, Pageable pageable);
 
-    List<PaymentEntity> findByOrderId(Long paymentId);
+    List<PaymentEntity> findByOrderReference(String orderReference);
 
 }
