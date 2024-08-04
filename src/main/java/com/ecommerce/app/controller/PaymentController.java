@@ -39,7 +39,7 @@ public class PaymentController {
     }
 
     @GetMapping
-    public AppResponse<List<PaymentResponse>> getPaymentByOrderId(@RequestParam @NotNull(message = "order reference is required") String orderReference) {
+    public AppResponse<List<PaymentResponse>> getPaymentByOrder(@RequestParam @NotNull(message = "order reference is required") String orderReference) {
         return AppResponse.ok(paymentService.getPaymentByOrder(orderReference));
     }
 
